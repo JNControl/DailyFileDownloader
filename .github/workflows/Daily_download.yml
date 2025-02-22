@@ -1,0 +1,30 @@
+name: Daily File Download and Analysis
+
+on:
+  schedule:
+    - cron: '0 8 * * *' # Každý den v 8:00 UTC (uprav dle potřeby)
+
+jobs:
+  download-and-analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Download and analyze files
+        run: python script.py
+
+      - name: Upload results
+        uses: actions/upload-artifact@v3
+        with:
+          name: analysis-results
+          path: results.csv

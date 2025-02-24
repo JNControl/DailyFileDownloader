@@ -2,7 +2,7 @@ name: Daily File Download and Analysis
 
 on:
   schedule:
-    - cron: '0 8 * * *' # Každý den v 8:00 UTC (uprav dle potřeby)
+    - cron: '0 13 * * *' # Každý den v 13:00 UTC (uprav dle potřeby)
 
 jobs:
   download-and-analyze:
